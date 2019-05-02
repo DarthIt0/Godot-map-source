@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
+[ext_resource path="res://addons/zylann.hterrain/tools/icons/icon_heightmap_node.svg" type="Texture" id=2]
+[ext_resource path="res://data.hterrain" type="Resource" id=3]
+[ext_resource path="res://addons/zyllann.hterrain_demo/textures/ground/grass_albedo_bump.png" type="Texture" id=4]
+[ext_resource path="res://addons/zyllann.hterrain_demo/textures/ground/grass_normal_roughness.png" type="Texture" id=5]
+[ext_resource path="res://addons/zyllann.hterrain_demo/textures/ground/bricks_albedo_bump.png" type="Texture" id=6]
+[ext_resource path="res://addons/zyllann.hterrain_demo/textures/ground/leaves_albedo_bump.png" type="Texture" id=7]
+[ext_resource path="res://addons/zyllann.hterrain_demo/textures/ground/leaves_normal_roughness.png" type="Texture" id=8]
+[ext_resource path="res://addons/zyllann.hterrain_demo/textures/ground/sand_albedo_bump.png" type="Texture" id=9]
+[ext_resource path="res://addons/zyllann.hterrain_demo/textures/ground/sand_normal_roughness.png" type="Texture" id=10]
+
+[node name="Node" type="Node"]
+
+[node name="HTerrain" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -150, -50, -150 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+_terrain_data = ExtResource( 3 )
+chunk_size = 16
+shader_type = "Classic4"
+custom_shader = null
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = true
+shader_params/u_globalmap_blend_start = null
+shader_params/u_globalmap_blend_distance = null
+ground/albedo_bump_0 = ExtResource( 4 )
+ground/normal_roughness_0 = ExtResource( 5 )
+ground/albedo_bump_1 = ExtResource( 6 )
+ground/normal_roughness_1 = null
+ground/albedo_bump_2 = ExtResource( 7 )
+ground/normal_roughness_2 = ExtResource( 8 )
+ground/albedo_bump_3 = ExtResource( 9 )
+ground/normal_roughness_3 = ExtResource( 10 )
+_detail_objects_data = null
+
+[node name="DirectionalLight" type="DirectionalLight" parent="HTerrain"]
+transform = Transform( 1, 0, 0, 0, -0.535945, 0.844253, 0, -0.844253, -0.535945, 0, 135.233, 0 )
+light_energy = 3.0
+shadow_enabled = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.97968, -0.0733119, 0.186686, 0, 0.930801, 0.365527, -0.200565, 0.358099, -0.911887, 88.3, 31.614, -170.83 )
+far = 2166.1
+
